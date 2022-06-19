@@ -7,7 +7,7 @@ module.exports = async function (context, req) {
     var code = "";
 
     if (typeof english === 'undefined' || english === "") {
-        code = "Please enter some text to  convert!"
+        code = "Please enter some text to convert!"
     }else {
         code = morse.textToMorse(english);
     }
