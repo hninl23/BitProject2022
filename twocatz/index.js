@@ -4,11 +4,11 @@ module.exports = async function (context, req) {
     context.log('JavaScript HTTP trigger function processed a request.');
 
     async function getCatPic(){
-    const resp = await fetch("https://cataas.com/cat/cute/says/Bitcamp", {
+    let resp = await fetch("https://cataas.com/cat/cute/says/Bitcamp", {
         method: 'GET'
     });
     
-    const data = await resp.arrayBuffer()
+    let data = await resp.arrayBuffer()
     // we need to receive it as a buffer since this is an image we are receiving from the API
     // Buffer?? https://developer.mozilla.org/en-US/docs/Web/API/Blob
 
@@ -18,17 +18,17 @@ module.exports = async function (context, req) {
     return base64data
 }
 
-    function getName(){
-        var names = ["Shreya, Emily, Fifi, Beau, Evelyn, Julia, Daniel, Fardeen"];
+    function getNames(){
+        var names = ["Shreya", "Emily", "Fifi", "Beau", "Evelyn", "Julia", "Daniel", "Fardeen"];
         var random_value = Math.floor(names.length * Math.random())
-        var resultname = names[random_value]
-        return resultname
+        var resultName = names[random_value]
+        return resultName
     }
 
     var firstcat = await getCatPic();
     var secondcat = await getCatPic();
-    var name1 = getName();
-    var name2 = getName();
+    var name1 = getNames();
+    var name2 = getNames();
 
     context.res = {
         body: {
