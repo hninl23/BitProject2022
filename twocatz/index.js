@@ -2,7 +2,6 @@ const fetch = require('node-fetch')
 
 module.exports = async function (context, req) {
     context.log('JavaScript HTTP trigger function processed a request.');
-
     const resp = await fetch("https://bit-cat.azurewebsites.net/cat/says/serverless", {
         method: 'GET'
     });
