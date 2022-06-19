@@ -4,7 +4,7 @@ module.exports = async function (context, req) {
     context.log('JavaScript HTTP trigger function processed a request.');
 
     async function getCatPic(){
-    const resp = await fetch("https://bit-cat.azurewebsites.net/cat/says/serverless", {
+    const resp = await fetch("https://cataas.com/cat/cute/says/Bitcamp", {
         method: 'GET'
     });
     
