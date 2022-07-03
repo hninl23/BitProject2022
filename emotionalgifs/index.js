@@ -10,7 +10,7 @@ module.exports = async function (context, req) {
     const boundary = multipart.getBoundary(req.headers['content-type']);
   
     // TODO: assign the body variable the correct value
-    const body = req.body
+    const body = req.body;
 
     // parse the body
     const parts = multipart.Parse(body, boundary);
