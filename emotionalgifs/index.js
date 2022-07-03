@@ -32,8 +32,6 @@ async function analyzeImage(img){
     const subscriptionKey = process.env.SUBSCRIPTIONKEY;
     const uriBase = process.env.ENDPOINT + '/face/v1.0/detect';
     
-
-
     //to construct a url for us
     let params = new URLSearchParams({
         'returnFaceId': 'true',
