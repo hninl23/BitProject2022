@@ -70,4 +70,4 @@ async function analyzeImage(img){
         body: convertedResult
     };
 }
- main
+
