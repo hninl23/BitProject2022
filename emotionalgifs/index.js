@@ -1,6 +1,6 @@
 
 const multipart = require('parse-multipart');
-const fetch = require("node-fetch");
+
 
 module.exports = async function (context, req) {
     context.log('JavaScript HTTP trigger function processed a request.');
@@ -8,12 +8,13 @@ module.exports = async function (context, req) {
     const boundary = multipart.getBoundary(req.headers['content-type']);
   
     // TODO: assign the body variable the correct value
-    const body = req.body;
+    const body = req.body
 
     // parse the body
     const parts = multipart.Parse(body, boundary);
 
     //take buffer and take the first list item and convert to base 64
+ emotionalgifs
     //module.exports function
 //analyze the image
     const result = await analyzeImage(parts[0].data);
@@ -61,3 +62,12 @@ async function analyzeImage(img){
     return data; 
 }
 
+
+    let convertedResult = Buffer.from(parts[0].data).toString('base64');
+
+    context.res = {
+        // status: 200, /* Defaults to 200 */
+        body: convertedResult
+    };
+}
+ main
