@@ -1,5 +1,6 @@
 const CosmosClient = require("@azure/cosmos").CosmosClient;
 const { ItemResponse } = require("@azure/cosmos");
+const { random } = require("cypress/types/lodash");
 const qs = require('qs');
 
 //taking the request body and separating the query parameter (to get the values in a json object format)
@@ -29,9 +30,10 @@ async function createDocument(newItem) {
 
     // query to return all items
     const querySpec = {
-    query: "SELECT top 1 * FROM c order by c._ts desc"
+        query: "SELECT * from c"
     };
-
+    //giving everything from data place and the star is the placeholder(container)
+    //cosmos db allows u to globally distribute the data
     // read all items in the Items container
     const { resources: items } = await container.items
     .query(querySpec)
@@ -51,9 +53,10 @@ module.exports = async function (context, req) {
     let message = queryObject.Body; // this is the user's input
     let document =  {"message" : message} //whatever is stored
     let items = await createDocument(document)
+    let random_value = Math.floor(items.length * Math.random()); //picking a random number and inputting in the message slot and multiplying by item.range
     
     //format a text output
-    const responseMessage = `Thanks 😊! Stored your secret "${message}". 😯 Someone confessed that: ${JSON.stringify(items[0].message)}`
+    const responseMessage = `Thanks 😊! Stored your secret "${message}". 😯 Someone confessed that: ${JSON.stringify(items[random_value].message)}`
     context.res = {
         body: responseMessage
     };
