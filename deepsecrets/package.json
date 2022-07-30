@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@azure/cosmos": "^3.16.3",
     "qs": "^6.11.0"
   }
 }
