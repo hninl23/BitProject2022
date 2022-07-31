@@ -7,6 +7,9 @@ bunnForm.addEventListener('submit', function (event) {
     const username = document.getElementById("username").value
     const output = document.getElementById("output")
     //referencing the output by using the output id (display user's input)
+    if (username == "") {
+        alert("No name error.")
+    }
     output.textContent = username + "❤"
   });
   // What is an event listener?
