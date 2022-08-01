@@ -77,6 +77,6 @@ bunnForm.addEventListener('submit', async function (event) {
     console.log("image has been received");
     console.log(data);
 
-    window.open(data.dwonloadUri, "_self")
+    window.open(data.downloadUri, "_self")
   });
   
