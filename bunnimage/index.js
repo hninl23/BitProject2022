@@ -58,20 +58,20 @@ bunnForm.addEventListener('submit', async function (event) {
   // What is an event listener?
   //we are listening for submit and whenever someone submit we capture the event and do smthg
   //.value -> getting value of the text box
-  const downloadButton = document.getElementById("button1") //getting button function from html
+const downloadButton = document.getElementById("button1"); //getting button function from html
 //when we click download the code fires
   downloadButton.addEventListener("click", async function(event) {
-        console.log("clicked button");
+    console.log("clicked button");
     var username = document.getElementById("downloadusername").value; //values in html and store in here
     console.log("attempting to get your image...");
 
-    const url = "https://bitproject-hnin.azurewebsites.net/api/bunnimage-download?code=MniVeFJKwVszl1bDjPdlEPsE6PRjJvO922qTZgJveoieAzFuKUAKeg=="
+    const url = "https://bitproject-hnin.azurewebsites.net/api/bunnimage-download?code=MniVeFJKwVszl1bDjPdlEPsE6PRjJvO922qTZgJveoieAzFuKUAKeg==";
     const resp = await fetch(url, {
         method:"GET",
         headers:{
             username: username,
-        },
-    });
+    },
+});
     const data = await resp.json(); //turn whatever we got from the api request into a json
 
     console.log("image has been received");
