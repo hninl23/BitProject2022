@@ -15,8 +15,10 @@ module.exports = async function (context, req) {
     var thirdcat = await getCatPic(name3);
     var fourthcat = await getCatPic(name4);
 
+    context.log("Got the images...");
+
     async function getCatPic(){
-    let resp = await fetch("https://cataas.com/cat/cute/says/Bitcamp", {
+    const resp = await fetch("https://cataas.com/cat/cute/says/Bitcamp", {
         method: 'GET'
     });
     
