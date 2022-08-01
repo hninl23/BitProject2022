@@ -3,6 +3,18 @@ const fetch = require('node-fetch')
 module.exports = async function (context, req) {
     context.log('JavaScript HTTP trigger function processed a request.');
 
+    var name1 = req.query.name1;
+    var name2 = req.query.name2;
+    var name3 = req.query.name3;
+    var name4 = req.query.name4;
+
+    context.log("Got the names...");
+
+    var firstcat = await getCatPic(name1);
+    var secondcat = await getCatPic(name2);
+    var thirdcat = await getCatPic(name3);
+    var fourthcat = await getCatPic(name4);
+
     async function getCatPic(){
     let resp = await fetch("https://cataas.com/cat/cute/says/Bitcamp", {
         method: 'GET'
@@ -18,23 +30,14 @@ module.exports = async function (context, req) {
     return base64data
 }
 
-    function getNames(){
-        var names = ["Shreya", "Emily", "Fifi", "Beau", "Evelyn", "Julia", "Daniel", "Fardeen"];
-        var random_value = Math.floor(names.length * Math.random())
-        var resultName = names[random_value]
-        return resultName
-    }
-
-    var firstcat = await getCatPic();
-    var secondcat = await getCatPic();
-    var name1 = getNames();
-    var name2 = getNames();
 
     context.res = {
         body: {
             cat1: firstcat,
             cat2: secondcat,
-            names: [name1, name2]
+            cat3: thirdcat,
+            cat4: fourthcat,
+            names: [name1, name2,name3,name4]
         }
     }
     };
